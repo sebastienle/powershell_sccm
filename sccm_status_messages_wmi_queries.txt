@@ -1,0 +1,597 @@
+PS 101:\> Get-CMStatusMessageQuery -Name "All Status Messages from a Specific System" | fl *
+ 
+ 
+SmsProviderObjectPath          : SMS_Query.QueryID="SMS508"
+Comments                       : Status messages reported by a specific system.
+Expression                     : select stat.*, ins.*, att1.*, stat.Time from SMS_StatusMessage as stat left join SMS_StatMsgInsStrings
+                                 as ins on stat.RecordID = ins.RecordID left join SMS_StatMsgAttributes as att1 on stat.RecordID =
+                                 att1.RecordID where stat.MachineName = ##PRM:SMS_StatusMessage.MachineName## and stat.Time >=
+                                 ##PRM:SMS_StatusMessage.Time## order by stat.Time desc
+LimitToCollectionID            :
+LocalizedCategoryInstanceNames : {}
+Name                           : All Status Messages from a Specific System
+QueryID                        : SMS508
+ResultAliasNames               : {stat, stat, stat, stat...}
+ResultColumnsNames             : {SMS_StatusMessage.Component, SMS_StatusMessage.MachineName, SMS_StatusMessage.MessageID,
+                                 SMS_StatusMessage.MessageType...}
+TargetClassName                : SMS_StatusMessage
+PSComputerName                 : MTL-HQ-M100.CN.CA
+PSShowComputerName             : False
+ManagedObject                  : \\MTL-HQ-M100\root\sms\site_101:SMS_Query.QueryID="SMS508"
+EmbeddedProperties             : {}
+EmbeddedPropertyLists          : {}
+OverridingObjectClass          : SMS_Query
+RegMultiStringLists            : {}
+SecurityVerbs                  : 1
+GenericsArray                  :
+Generics                       :
+Count                          : 1
+DisplayString                  :
+DisplayDescription             :
+HelpTopic                      :
+ObjectClass                    : SMS_Query
+Properties                     : [SecurityVerbs(1)]
+                                 instance of SMS_Query
+                                 {
+                                        Comments = "Status messages reported by a specific system.";
+                                        Expression = "select stat.*, ins.*, att1.*, stat.Time from SMS_StatusMessage as stat left join
+                                 SMS_StatMsgInsStrings as ins on stat.RecordID = ins.RecordID left join SMS_StatMsgAttributes as att1 on
+                                 stat.RecordID = att1.RecordID where stat.MachineName = ##PRM:SMS_StatusMessage.MachineName## and
+                                 stat.Time >= ##PRM:SMS_StatusMessage.Time## order by stat.Time desc";
+                                        LimitToCollectionID = "";
+                                        LocalizedCategoryInstanceNames = {};
+                                        Name = "All Status Messages from a Specific System";
+                                        QueryID = "SMS508";
+                                        ResultAliasNames = {"stat", "stat", "stat", "stat", "stat", "stat", "stat", "stat", "stat", "stat"
+,
+                                 "stat", "stat", "stat", "stat", "stat", "stat", "stat", "ins", "ins", "ins", "att1", "att1", "att1",
+                                 "att1"};
+                                        ResultColumnsNames = {"SMS_StatusMessage.Component", "SMS_StatusMessage.MachineName",
+                                 "SMS_StatusMessage.MessageID", "SMS_StatusMessage.MessageType", "SMS_StatusMessage.ModuleName",
+                                 "SMS_StatusMessage.PerClient", "SMS_StatusMessage.ProcessID", "SMS_StatusMessage.RecordID",
+                                 "SMS_StatusMessage.ReportFunction", "SMS_StatusMessage.Severity", "SMS_StatusMessage.SiteCode",
+                                 "SMS_StatusMessage.SuccessfulTransaction", "SMS_StatusMessage.ThreadID", "SMS_StatusMessage.Time",
+                                 "SMS_StatusMessage.TopLevelSiteCode", "SMS_StatusMessage.Transaction", "SMS_StatusMessage.Win32Error",
+                                 "SMS_StatMsgInsStrings.InsStrIndex", "SMS_StatMsgInsStrings.InsStrValue",
+                                 "SMS_StatMsgInsStrings.RecordID", "SMS_StatMsgAttributes.AttributeID",
+                                 "SMS_StatMsgAttributes.AttributeTime", "SMS_StatMsgAttributes.AttributeValue",
+                                 "SMS_StatMsgAttributes.RecordID"};
+                                        TargetClassName = "SMS_StatusMessage";
+                                 };
+ 
+PropertyNames                  : {Comments, Expression, LimitToCollectionID, LocalizedCategoryInstanceNames...}
+MethodNames                    :
+MethodList                     : {}
+PropertyList                   : {[Comments, Status messages reported by a specific system.], [Expression, select stat.*, ins.*, att1.*,
+                                 stat.Time from SMS_StatusMessage as stat left join SMS_StatMsgInsStrings as ins on stat.RecordID =
+                                 ins.RecordID left join SMS_StatMsgAttributes as att1 on stat.RecordID = att1.RecordID where
+                                 stat.MachineName = ##PRM:SMS_StatusMessage.MachineName## and stat.Time >=
+                                 ##PRM:SMS_StatusMessage.Time## order by stat.Time desc], [LimitToCollectionID, ],
+                                 [LocalizedCategoryInstanceNames, ]...}
+UniqueIdentifier               : e70af475-391e-4cf6-b783-cb5aec59aa2e
+ParentResultObject             :
+GlobalDisplayString            :
+AutoCommit                     : False
+AutoRefresh                    : False
+UserDataObject                 :
+ConnectionManager              : Microsoft.ConfigurationManagement.PowerShell.Provider.CmdletWqlConnectionManager
+TraceProperties                : True
+NamedValueDictionary           : {[AllProviderLocations, System.Collections.Generic.List`1[System.Management.ManagementBaseObject]],
+                                 [ProviderLocation,
+                                 \\MTL-HQ-M100\ROOT\sms:SMS_ProviderLocation.Machine="MTL-HQ-M100.CN.CA",SiteCode="101"],
+                                 [ProviderMachineName, MTL-HQ-M100.CN.CA], [Connection, \\MTL-HQ-M100.CN.CA\root\sms\site_101]...}
+AsyncOperationData             :
+RetainObjectLock               : False
+ 
+ 
+ 
+ 
+ 
+ 
+PS 101:\> Get-CMStatusMessageQuery -Name "All Status Messages for a Specific Deployment at a Specific Site" | fl *
+ 
+ 
+SmsProviderObjectPath          : SMS_Query.QueryID="SMS503"
+Comments                       : Status messages reported for a specific deployment at a specific site.
+Expression                     : select stat.*, ins.*, att1.*, att1.AttributeTime from SMS_StatusMessage as stat left join
+                                 SMS_StatMsgInsStrings as ins on stat.RecordID = ins.RecordID left join SMS_StatMsgAttributes as att1 on
+                                 stat.RecordID = att1.RecordID inner join SMS_StatMsgAttributes as att2 on stat.RecordID = att2.RecordID
+                                 where att2.AttributeID = 401 and att2.AttributeValue = ##PRM:SMS_StatMsgAttributes.AttributeValue## and
+                                 stat.SiteCode = ##PRM:SMS_StatusMessage.SiteCode## and att2.AttributeTime >=
+                                 ##PRM:SMS_StatMsgAttributes.AttributeTime## order by att1.AttributeTime desc
+LimitToCollectionID            :
+LocalizedCategoryInstanceNames : {}
+Name                           : All Status Messages for a Specific Deployment at a Specific Site
+QueryID                        : SMS503
+ResultAliasNames               : {stat, stat, stat, stat...}
+ResultColumnsNames             : {SMS_StatusMessage.Component, SMS_StatusMessage.MachineName, SMS_StatusMessage.MessageID,
+                                 SMS_StatusMessage.MessageType...}
+TargetClassName                : SMS_StatusMessage
+PSComputerName                 : MTL-HQ-M100.CN.CA
+PSShowComputerName             : False
+ManagedObject                  : \\MTL-HQ-M100\root\sms\site_101:SMS_Query.QueryID="SMS503"
+EmbeddedProperties             : {}
+EmbeddedPropertyLists          : {}
+OverridingObjectClass          : SMS_Query
+RegMultiStringLists            : {}
+SecurityVerbs                  : 1
+GenericsArray                  :
+Generics                       :
+Count                          : 1
+DisplayString                  :
+DisplayDescription             :
+HelpTopic                      :
+ObjectClass                    : SMS_Query
+Properties                     : [SecurityVerbs(1)]
+                                 instance of SMS_Query
+                                 {
+                                        Comments = "Status messages reported for a specific deployment at a specific site.";
+                                        Expression = "select stat.*, ins.*, att1.*, att1.AttributeTime from SMS_StatusMessage as stat left
+ 
+                                 join SMS_StatMsgInsStrings as ins on stat.RecordID = ins.RecordID left join SMS_StatMsgAttributes as
+                                 att1 on stat.RecordID = att1.RecordID inner join SMS_StatMsgAttributes as att2 on stat.RecordID =
+                                 att2.RecordID where att2.AttributeID = 401 and att2.AttributeValue =
+                                 ##PRM:SMS_StatMsgAttributes.AttributeValue## and stat.SiteCode = ##PRM:SMS_StatusMessage.SiteCode## and
+                                 att2.AttributeTime >= ##PRM:SMS_StatMsgAttributes.AttributeTime## order by att1.AttributeTime desc";
+                                        LimitToCollectionID = "";
+                                        LocalizedCategoryInstanceNames = {};
+                                        Name = "All Status Messages for a Specific Deployment at a Specific Site";
+                                        QueryID = "SMS503";
+                                        ResultAliasNames = {"stat", "stat", "stat", "stat", "stat", "stat", "stat", "stat", "stat", "stat"
+,
+                                 "stat", "stat", "stat", "stat", "stat", "stat", "stat", "ins", "ins", "ins", "att1", "att1", "att1",
+                                 "att1"};
+                                        ResultColumnsNames = {"SMS_StatusMessage.Component", "SMS_StatusMessage.MachineName",
+                                 "SMS_StatusMessage.MessageID", "SMS_StatusMessage.MessageType", "SMS_StatusMessage.ModuleName",
+                                 "SMS_StatusMessage.PerClient", "SMS_StatusMessage.ProcessID", "SMS_StatusMessage.RecordID",
+                                 "SMS_StatusMessage.ReportFunction", "SMS_StatusMessage.Severity", "SMS_StatusMessage.SiteCode",
+                                 "SMS_StatusMessage.SuccessfulTransaction", "SMS_StatusMessage.ThreadID", "SMS_StatusMessage.Time",
+                                 "SMS_StatusMessage.TopLevelSiteCode", "SMS_StatusMessage.Transaction", "SMS_StatusMessage.Win32Error",
+                                 "SMS_StatMsgInsStrings.InsStrIndex", "SMS_StatMsgInsStrings.InsStrValue",
+                                 "SMS_StatMsgInsStrings.RecordID", "SMS_StatMsgAttributes.AttributeID",
+                                 "SMS_StatMsgAttributes.AttributeTime", "SMS_StatMsgAttributes.AttributeValue",
+                                 "SMS_StatMsgAttributes.RecordID"};
+                                        TargetClassName = "SMS_StatusMessage";
+                                 };
+ 
+PropertyNames                  : {Comments, Expression, LimitToCollectionID, LocalizedCategoryInstanceNames...}
+MethodNames                    :
+MethodList                     : {}
+PropertyList                   : {[Comments, Status messages reported for a specific deployment at a specific site.], [Expression,
+                                 select stat.*, ins.*, att1.*, att1.AttributeTime from SMS_StatusMessage as stat left join
+                                 SMS_StatMsgInsStrings as ins on stat.RecordID = ins.RecordID left join SMS_StatMsgAttributes as att1 on
+                                 stat.RecordID = att1.RecordID inner join SMS_StatMsgAttributes as att2 on stat.RecordID = att2.RecordID
+                                 where att2.AttributeID = 401 and att2.AttributeValue = ##PRM:SMS_StatMsgAttributes.AttributeValue## and
+                                 stat.SiteCode = ##PRM:SMS_StatusMessage.SiteCode## and att2.AttributeTime >=
+                                 ##PRM:SMS_StatMsgAttributes.AttributeTime## order by att1.AttributeTime desc], [LimitToCollectionID, ],
+                                 [LocalizedCategoryInstanceNames, ]...}
+UniqueIdentifier               : cbbe3da8-c8c0-41ef-bd8a-dc76e042de98
+ParentResultObject             :
+GlobalDisplayString            :
+AutoCommit                     : False
+AutoRefresh                    : False
+UserDataObject                 :
+ConnectionManager              : Microsoft.ConfigurationManagement.PowerShell.Provider.CmdletWqlConnectionManager
+TraceProperties                : True
+NamedValueDictionary           : {[AllProviderLocations, System.Collections.Generic.List`1[System.Management.ManagementBaseObject]],
+                                 [ProviderLocation,
+                                 \\MTL-HQ-M100\ROOT\sms:SMS_ProviderLocation.Machine="MTL-HQ-M100.CN.CA",SiteCode="101"],
+                                 [ProviderMachineName, MTL-HQ-M100.CN.CA], [Connection, \\MTL-HQ-M100.CN.CA\root\sms\site_101]...}
+AsyncOperationData             :
+RetainObjectLock               : False
+ 
+ 
+ 
+ 
+ 
+ 
+Example of datetime format from an object: 20180130180538.957000+***
+ 
+To convert to WMI format: ([wmi]"").ConvertFromDateTime("2018-03-02")
+ 
+Query for all status messages for a system: 
+select stat.*, ins.*, att1.*, stat.Time from SMS_StatusMessage as stat left join SMS_StatMsgInsStrings as ins on stat.RecordID = ins.RecordID left join SMS_StatMsgAttributes as att1 on stat.RecordID = att1.RecordID where stat.MachineName = "C371656" and stat.Time >= '20180302000000.000000+***' order by stat.Time desc
+ 
+Query for all status messages for a system from a task sequence: 
+select stat.*, ins.*, att1.*, stat.Time from SMS_StatusMessage as stat left join SMS_StatMsgInsStrings as ins on stat.RecordID = ins.RecordID left join SMS_StatMsgAttributes as att1 on stat.RecordID = att1.RecordID where stat.MachineName = "C371656" and stat.Time >= '20180302000000.000000+***' and stat.Component = 'Task Sequence Engine' order by stat.Time desc
+ 
+Query for all status messages for a system from a specific task sequence id: 
+select stat.*, ins.*, att1.*, stat.Time from SMS_StatusMessage as stat left join SMS_StatMsgInsStrings as ins on stat.RecordID = ins.RecordID left join SMS_StatMsgAttributes as att1 on stat.RecordID = att1.RecordID where stat.MachineName = 'C371656' and stat.Time >= '20180302000000.000000+***' and stat.Component = 'Task Sequence Engine' and att1.AttributeValue = '101011DB' order by stat.Time desc
+ 
+ 
+ 
+Filtering by deployment requires a deployment id
+ 
+SMS_StatMsgAttributes att1
+                AttributeID (400)
+                AttributeTime
+                AttributeValue  (101011DB --> PackageID of Task Sequence)
+                RecordID
+SMS_StatMsgInsStrings ins
+                InsStrIndex
+                InsStrValue
+                RecordID
+SMS_StatusMessage (examples in parenthesis)
+                Component (Task Sequence Engine)
+                MachineName (C371656)
+                MessageID (11134)
+                MessageType (256 (0x100))
+                ModuleName (SMS Client)
+                PerClient (2 (0x2))
+                ProcessID (5204)
+                RecordID (7205...)
+                ReportFunction (0 (0x0))
+                Severity (1073741824 (0x40000000))
+                SiteCode (101)
+                SuccessfulTransaction (0 (0x0))
+                ThreadID (5228 (0x146C))
+                Time (datetime)
+                TopLevelSiteCode
+                Transaction (0 (0x0))
+                Win32Error (0 (0x0))
+ 
+Message IDs
+                11122 --> Skipped a group
+                11124 --> Started a group
+                11127 --> Completed a group
+                11128 --> Skipped the disabled action
+                11130 --> Task Skipped
+                11134 --> Task Completed Successfully
+                11140 --> Task Sequence Execution Engine Started
+                11143 --> Task Sequence Execution Engine Successfully Completed
+                11142 --> Task Sequence Engine initiated a reboot
+                11171 --> Task Sequence Manager Successfully Completed
+                11902 --> Successfully installed application
+                WHAT ARE WARNING AND FAILURES???
+ 
+ 
+Get-WmiObject -ComputerName mtl-hq-m100.cn.ca -Namespace root\sms\site_101 -Class SMS_StatusMessage -Filter "MachineName='C371656'"
+ 
+__GENUS               : 2
+__CLASS               : SMS_StatusMessage
+__SUPERCLASS          : SMS_BaseClass
+__DYNASTY             : SMS_BaseClass
+__RELPATH             : SMS_StatusMessage.RecordID="72057594140136464"
+__PROPERTY_COUNT      : 17
+__DERIVATION          : {SMS_BaseClass}
+__SERVER              : MTL-HQ-M100
+__NAMESPACE           : root\sms\site_101
+__PATH                : \\MTL-HQ-M100\root\sms\site_101:SMS_StatusMessage.RecordID="72057594140136464"
+Component             : Task Sequence Action
+MachineName           : C371656
+MessageID             : 11910
+MessageType           : 256
+ModuleName            : SMS Client
+PerClient             : 2
+ProcessID             : 3268
+RecordID              : 72057594140136464
+ReportFunction        : 0
+Severity              : 2147483648
+SiteCode              : 101
+SuccessfulTransaction : 0
+ThreadID              : 5708
+Time                  : 20180201202341.590000+***
+TopLevelSiteCode      :
+Transaction           : 0
+Win32Error            : 0
+PSComputerName        : MTL-HQ-M100
+ 
+ 
+Get-WmiObject -ComputerName mtl-hq-m100.cn.ca -Namespace root\sms\site_101 -Class SMS_StatMsgAttributes -Filter
+"RecordID='72057594140136464'"
+ 
+ 
+__GENUS          : 2
+__CLASS          : SMS_StatMsgAttributes
+__SUPERCLASS     : SMS_BaseClass
+__DYNASTY        : SMS_BaseClass
+__RELPATH        : SMS_StatMsgAttributes.AttributeID=401,AttributeTime="20180201202341.590000+***",AttributeValue="1012
+                   04D3",RecordID="72057594140136464"
+__PROPERTY_COUNT : 4
+__DERIVATION     : {SMS_BaseClass}
+__SERVER         : MTL-HQ-M100
+__NAMESPACE      : root\sms\site_101
+__PATH           : \\MTL-HQ-M100\root\sms\site_101:SMS_StatMsgAttributes.AttributeID=401,AttributeTime="20180201202341.
+                   590000+***",AttributeValue="101204D3",RecordID="72057594140136464"
+AttributeID      : 401
+AttributeTime    : 20180201202341.590000+***
+AttributeValue   : 101204D3
+RecordID         : 72057594140136464
+PSComputerName   : MTL-HQ-M100
+ 
+__GENUS          : 2
+__CLASS          : SMS_StatMsgAttributes
+__SUPERCLASS     : SMS_BaseClass
+__DYNASTY        : SMS_BaseClass
+__RELPATH        : SMS_StatMsgAttributes.AttributeID=408,AttributeTime="20180201202341.590000+***",AttributeValue="GUID
+                   :ECCA4119-E8BE-4699-BDAB-DF384819CB4C",RecordID="72057594140136464"
+__PROPERTY_COUNT : 4
+__DERIVATION     : {SMS_BaseClass}
+__SERVER         : MTL-HQ-M100
+__NAMESPACE      : root\sms\site_101
+__PATH           : \\MTL-HQ-M100\root\sms\site_101:SMS_StatMsgAttributes.AttributeID=408,AttributeTime="20180201202341.
+                   590000+***",AttributeValue="GUID:ECCA4119-E8BE-4699-BDAB-DF384819CB4C",RecordID="72057594140136464"
+AttributeID      : 408
+AttributeTime    : 20180201202341.590000+***
+AttributeValue   : GUID:ECCA4119-E8BE-4699-BDAB-DF384819CB4C
+RecordID         : 72057594140136464
+PSComputerName   : MTL-HQ-M100
+ 
+__GENUS          : 2
+__CLASS          : SMS_StatMsgAttributes
+__SUPERCLASS     : SMS_BaseClass
+__DYNASTY        : SMS_BaseClass
+__RELPATH        : SMS_StatMsgAttributes.AttributeID=425,AttributeTime="20180201202341.590000+***",AttributeValue="0",R
+                   ecordID="72057594140136464"
+__PROPERTY_COUNT : 4
+__DERIVATION     : {SMS_BaseClass}
+__SERVER         : MTL-HQ-M100
+__NAMESPACE      : root\sms\site_101
+__PATH           : \\MTL-HQ-M100\root\sms\site_101:SMS_StatMsgAttributes.AttributeID=425,AttributeTime="20180201202341.
+                   590000+***",AttributeValue="0",RecordID="72057594140136464"
+AttributeID      : 425
+AttributeTime    : 20180201202341.590000+***
+AttributeValue   : 0
+RecordID         : 72057594140136464
+PSComputerName   : MTL-HQ-M100
+ 
+__GENUS          : 2
+__CLASS          : SMS_StatMsgAttributes
+__SUPERCLASS     : SMS_BaseClass
+__DYNASTY        : SMS_BaseClass
+__RELPATH        : SMS_StatMsgAttributes.AttributeID=426,AttributeTime="20180201202341.590000+***",AttributeValue="30:E
+                   1:71:83:1B:7F",RecordID="72057594140136464"
+__PROPERTY_COUNT : 4
+__DERIVATION     : {SMS_BaseClass}
+__SERVER         : MTL-HQ-M100
+__NAMESPACE      : root\sms\site_101
+__PATH           : \\MTL-HQ-M100\root\sms\site_101:SMS_StatMsgAttributes.AttributeID=426,AttributeTime="20180201202341.
+                   590000+***",AttributeValue="30:E1:71:83:1B:7F",RecordID="72057594140136464"
+AttributeID      : 426
+AttributeTime    : 20180201202341.590000+***
+AttributeValue   : 30:E1:71:83:1B:7F
+RecordID         : 72057594140136464
+PSComputerName   : MTL-HQ-M100
+ 
+__GENUS          : 2
+__CLASS          : SMS_StatMsgAttributes
+__SUPERCLASS     : SMS_BaseClass
+__DYNASTY        : SMS_BaseClass
+__RELPATH        : SMS_StatMsgAttributes.AttributeID=427,AttributeTime="20180201202341.590000+***",AttributeValue="31E9
+                   18FE-B4CB-11E6-A204-900C72010021",RecordID="72057594140136464"
+__PROPERTY_COUNT : 4
+__DERIVATION     : {SMS_BaseClass}
+__SERVER         : MTL-HQ-M100
+__NAMESPACE      : root\sms\site_101
+__PATH           : \\MTL-HQ-M100\root\sms\site_101:SMS_StatMsgAttributes.AttributeID=427,AttributeTime="20180201202341.
+                   590000+***",AttributeValue="31E918FE-B4CB-11E6-A204-900C72010021",RecordID="72057594140136464"
+AttributeID      : 427
+AttributeTime    : 20180201202341.590000+***
+AttributeValue   : 31E918FE-B4CB-11E6-A204-900C72010021
+RecordID         : 72057594140136464
+PSComputerName   : MTL-HQ-M100
+ 
+ 
+ 
+PS C:\> Get-WmiObject -ComputerName mtl-hq-m100.cn.ca -Namespace root\sms\site_101 -Class SMS_StatMsgInsStrings -Filter
+"RecordID='72057594140136464'"
+ 
+ 
+__GENUS          : 2
+__CLASS          : SMS_StatMsgInsStrings
+__SUPERCLASS     : SMS_BaseClass
+__DYNASTY        : SMS_BaseClass
+__RELPATH        : SMS_StatMsgInsStrings.InsStrIndex=1,RecordID="72057594140136464"
+__PROPERTY_COUNT : 3
+__DERIVATION     : {SMS_BaseClass}
+__SERVER         : MTL-HQ-M100
+__NAMESPACE      : root\sms\site_101
+__PATH           : \\MTL-HQ-M100\root\sms\site_101:SMS_StatMsgInsStrings.InsStrIndex=1,RecordID="72057594140136464"
+InsStrIndex      : 1
+InsStrValue      : CN Logging - Launching Variables Declarations
+RecordID         : 72057594140136464
+PSComputerName   : MTL-HQ-M100
+ 
+__GENUS          : 2
+__CLASS          : SMS_StatMsgInsStrings
+__SUPERCLASS     : SMS_BaseClass
+__DYNASTY        : SMS_BaseClass
+__RELPATH        : SMS_StatMsgInsStrings.InsStrIndex=3,RecordID="72057594140136464"
+__PROPERTY_COUNT : 3
+__DERIVATION     : {SMS_BaseClass}
+__SERVER         : MTL-HQ-M100
+__NAMESPACE      : root\sms\site_101
+__PATH           : \\MTL-HQ-M100\root\sms\site_101:SMS_StatMsgInsStrings.InsStrIndex=3,RecordID="72057594140136464"
+InsStrIndex      : 3
+InsStrValue      : 0
+RecordID         : 72057594140136464
+PSComputerName   : MTL-HQ-M100
+ 
+ 
+ 
+Query:
+Get-WmiObject -ComputerName mtl-hq-m100.cn.ca -Namespace root\sms\site_101 -Query "select stat.*, ins.*, att1.*,
+stat.Time from SMS_StatusMessage as stat left join SMS_StatMsgInsStrings as ins on stat.RecordID = ins.RecordID left jo
+in SMS_StatMsgAttributes as att1 on stat.RecordID = att1.RecordID where stat.MachineName = 'C371656' and stat.Time >= '2
+0180302000000.000000+***' and stat.Component = 'Task Sequence Engine' and att1.AttributeValue = '101011DB' order by stat
+.Time desc"
+ 
+ 
+PS C:\> $tmp = Get-WmiObject -ComputerName mtl-hq-m100.cn.ca -Namespace root\sms\site_101 -Query "select stat.*, ins.*,
+att1.*, stat.Time from SMS_StatusMessage as stat left join SMS_StatMsgInsStrings as ins on stat.RecordID = ins.RecordID
+left join SMS_StatMsgAttributes as att1 on stat.RecordID = att1.RecordID where stat.MachineName = 'C371656' and stat.Tim
+e >= '20180302000000.000000+***' and stat.Component = 'Task Sequence Engine' and att1.AttributeValue = '101011DB' order
+by stat.Time desc" | select -first 5
+PS C:\> $tmp
+ 
+ 
+__GENUS          : 2
+__CLASS          : __GENERIC
+__SUPERCLASS     :
+__DYNASTY        : __GENERIC
+__RELPATH        :
+__PROPERTY_COUNT : 3
+__DERIVATION     : {}
+__SERVER         : MTL-HQ-M100
+__NAMESPACE      : root\sms\site_101
+__PATH           :
+att1             : System.Management.ManagementBaseObject
+ins              : System.Management.ManagementBaseObject
+stat             : System.Management.ManagementBaseObject
+PSComputerName   : MTL-HQ-M100
+ 
+__GENUS          : 2
+__CLASS          : __GENERIC
+__SUPERCLASS     :
+__DYNASTY        : __GENERIC
+__RELPATH        :
+__PROPERTY_COUNT : 3
+__DERIVATION     : {}
+__SERVER         : MTL-HQ-M100
+__NAMESPACE      : root\sms\site_101
+__PATH           :
+att1             : System.Management.ManagementBaseObject
+ins              : System.Management.ManagementBaseObject
+stat             : System.Management.ManagementBaseObject
+PSComputerName   : MTL-HQ-M100
+ 
+__GENUS          : 2
+__CLASS          : __GENERIC
+__SUPERCLASS     :
+__DYNASTY        : __GENERIC
+__RELPATH        :
+__PROPERTY_COUNT : 3
+__DERIVATION     : {}
+__SERVER         : MTL-HQ-M100
+__NAMESPACE      : root\sms\site_101
+__PATH           :
+att1             : System.Management.ManagementBaseObject
+ins              : System.Management.ManagementBaseObject
+stat             : System.Management.ManagementBaseObject
+PSComputerName   : MTL-HQ-M100
+ 
+__GENUS          : 2
+__CLASS          : __GENERIC
+__SUPERCLASS     :
+__DYNASTY        : __GENERIC
+__RELPATH        :
+__PROPERTY_COUNT : 3
+__DERIVATION     : {}
+__SERVER         : MTL-HQ-M100
+__NAMESPACE      : root\sms\site_101
+__PATH           :
+att1             : System.Management.ManagementBaseObject
+ins              : System.Management.ManagementBaseObject
+stat             : System.Management.ManagementBaseObject
+PSComputerName   : MTL-HQ-M100
+ 
+__GENUS          : 2
+__CLASS          : __GENERIC
+__SUPERCLASS     :
+__DYNASTY        : __GENERIC
+__RELPATH        :
+__PROPERTY_COUNT : 3
+__DERIVATION     : {}
+__SERVER         : MTL-HQ-M100
+__NAMESPACE      : root\sms\site_101
+__PATH           :
+att1             : System.Management.ManagementBaseObject
+ins              : System.Management.ManagementBaseObject
+stat             : System.Management.ManagementBaseObject
+PSComputerName   : MTL-HQ-M100
+ 
+ 
+ 
+PS C:\> $tmp[0]
+ 
+ 
+__GENUS          : 2
+__CLASS          : __GENERIC
+__SUPERCLASS     :
+__DYNASTY        : __GENERIC
+__RELPATH        :
+__PROPERTY_COUNT : 3
+__DERIVATION     : {}
+__SERVER         : MTL-HQ-M100
+__NAMESPACE      : root\sms\site_101
+__PATH           :
+att1             : System.Management.ManagementBaseObject
+ins              : System.Management.ManagementBaseObject
+stat             : System.Management.ManagementBaseObject
+PSComputerName   : MTL-HQ-M100
+ 
+ 
+ 
+PS C:\> $tmp[0].att1
+ 
+ 
+__GENUS          : 2
+__CLASS          : SMS_StatMsgAttributes
+__SUPERCLASS     : SMS_BaseClass
+__DYNASTY        : SMS_BaseClass
+__RELPATH        : SMS_StatMsgAttributes.AttributeID=400,AttributeTime="20180302205526.013000+***",AttributeValue="1010
+                   11DB",RecordID="72057594142395172"
+__PROPERTY_COUNT : 4
+__DERIVATION     : {SMS_BaseClass}
+__SERVER         :
+__NAMESPACE      :
+__PATH           :
+AttributeID      : 400
+AttributeTime    : 20180302205526.013000+***
+AttributeValue   : 101011DB
+RecordID         : 72057594142395172
+PSComputerName   :
+ 
+ 
+ 
+PS C:\> $tmp[0].ins
+ 
+ 
+__GENUS          : 2
+__CLASS          : SMS_StatMsgInsStrings
+__SUPERCLASS     : SMS_BaseClass
+__DYNASTY        : SMS_BaseClass
+__RELPATH        : SMS_StatMsgInsStrings.InsStrIndex=0,RecordID="72057594142395172"
+__PROPERTY_COUNT : 3
+__DERIVATION     : {SMS_BaseClass}
+__SERVER         :
+__NAMESPACE      :
+__PATH           :
+InsStrIndex      : 0
+InsStrValue      : 363
+RecordID         : 72057594142395172
+PSComputerName   :
+ 
+ 
+ 
+PS C:\> $tmp[0].stat
+ 
+ 
+__GENUS               : 2
+__CLASS               : SMS_StatusMessage
+__SUPERCLASS          : SMS_BaseClass
+__DYNASTY             : SMS_BaseClass
+__RELPATH             : SMS_StatusMessage.RecordID="72057594142395172"
+__PROPERTY_COUNT      : 17
+__DERIVATION          : {SMS_BaseClass}
+__SERVER              :
+__NAMESPACE           :
+__PATH                :
+Component             : Task Sequence Engine
+MachineName           : C371656
+MessageID             : 11143
+MessageType           : 256
+ModuleName            : SMS Client
+PerClient             : 2
+ProcessID             : 4120
+RecordID              : 72057594142395172
+ReportFunction        : 0
+Severity              : 1073741824
+SiteCode              : 101
+SuccessfulTransaction : 0
+ThreadID              : 4348
+Time                  : 20180302205526.013000+***
+TopLevelSiteCode      :
+Transaction           : 0
+Win32Error            : 0
+PSComputerName        :
